@@ -1,7 +1,7 @@
 # Logs
 logs
 *.log
-
+.vagrant/
 # Runtime data
 pids
 *.pid
