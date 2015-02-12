@@ -2,12 +2,12 @@
  * Created by douglas on 29/01/15.
  */
 
-angular.module("ntalk").controller("ContatosController", function($resource, $scope) {
+angular.module("ntalk").controller("ContatosController", function(Contato, $scope) {
     $scope.contatos = [];
     $scope.filtro = '';
     $scope.mensagem = {texto: ''};
 
-    var Contato = $resource('/api/contatos/:id');
+    //var Contato = $resource('/api/contatos/:id');
 
     //codigo para busca no banco
     function buscaContatos() {

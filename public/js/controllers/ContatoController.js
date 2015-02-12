@@ -1,5 +1,5 @@
-angular.module("ntalk").controller("ContatoController", function($scope, $routeParams, $resource, $location) {
-    var Contato = $resource('/api/contatos/:id');
+angular.module("ntalk").controller("ContatoController", function($scope, $routeParams, Contato, $location) {
+    //var Contato = $resource('/api/contatos/:id');
 
     if ($routeParams.id) {
         Contato.get({id: $routeParams.id},
