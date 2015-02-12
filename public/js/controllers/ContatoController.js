@@ -13,17 +13,18 @@ angular.module("ntalk").controller("ContatoController", function($scope, $routeP
                 console.log(erro);
             }
         );
-    } else {
-        $scope.contato = new Contato();
-        $scope.salva = function() {
-            $scope.contato.$save()
-                .then(function () {
-                    $scope.mensagem = {texto: 'Salvo com sucesso'};
-                    $scope.contato = new Contato();
-                })
-                .catch(function (erro) {
-                    $scope.mensagem = {texto: 'Não foi possível salvar'};
-                });
-        }
+    }
+
+    $scope.contato = new Contato();
+    $scope.salva = function() {
+        $scope.contato.$save()
+            .then(function () {
+                $scope.mensagem = {texto: 'Salvo com sucesso'};
+                $location.path('#/api/contatos');
+                //$scope.contato = new Contato();
+            })
+            .catch(function (erro) {
+                $scope.mensagem = {texto: 'Não foi possível salvar'};
+            });
     }
 });
