@@ -1,3 +1,5 @@
-angular.module('ntalk').factory('Contato', function($resource){
+angular.module('ntalk').factory('Contato', recurso);
+
+function recurso($resource) {
     return $resource('/api/contatos/:id');
-});
+}
