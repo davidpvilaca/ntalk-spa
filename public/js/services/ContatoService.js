@@ -1,5 +1,9 @@
-angular.module('ntalk').factory('Contato', recurso);
+(function() {
+    'use strict';
 
-function recurso($resource) {
-    return $resource('/api/contatos/:id');
-}
+    angular.module('ntalk').factory('Contato', recurso);
+
+    function recurso($resource) {
+        return $resource('/api/contatos/:id');
+    }
+})();

@@ -4,11 +4,11 @@ angular.module('ntalk', ['ngRoute', 'ngResource'])
             templateUrl: '../partials/contatos.html',
             controller: 'ContatosController'
         })
-        .when('/api/contato/:id', {
+        .when('/api/contato', {
             templateUrl: '../partials/contato.html',
             controller: 'ContatoController'
         })
-        .when('/api/contato', {
+        .when('/api/contato/:id', {
             templateUrl: '../partials/contato.html',
             controller: 'ContatoController'
         })

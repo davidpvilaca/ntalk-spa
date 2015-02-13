@@ -1,30 +1,35 @@
-angular.module("ntalk").controller("ContatoController", function($scope, $routeParams, Contato, $location) {
-    //var Contato = $resource('/api/contatos/:id');
+(function() {
+    'use strict';
 
-    if ($routeParams.id) {
-        Contato.get({id: $routeParams.id},
-            function (contato) {
-                $scope.contato = contato;
-            },
-            function (erro) {
-                $scope.mensagem = {
-                    texto: 'Não foi possível obter o contato'
-                };
-                console.log(erro);
-            }
-        );
-    }
+    angular.module("ntalk").controller("ContatoController", contatoCtrl);
 
-    $scope.contato = new Contato();
-    $scope.salva = function() {
-        $scope.contato.$save()
-            .then(function () {
-                $scope.mensagem = {texto: 'Salvo com sucesso'};
-                $location.path('#/api/contatos');
-                //$scope.contato = new Contato();
-            })
-            .catch(function (erro) {
-                $scope.mensagem = {texto: 'Não foi possível salvar'};
-            });
+    function contatoCtrl($scope, $routeParams, Contato, $location) {
+        $scope.contato = new Contato();
+        $scope.salva = salvaCont;
+
+        if ($routeParams.id) {
+            Contato.get({id: $routeParams.id},
+                function (contato) {
+                    $scope.contato = contato;
+                },
+                function (erro) {
+                    $scope.mensagem = {
+                        texto: 'Não foi possível obter o contato'
+                    };
+                    console.log(erro);
+                }
+            );
+        }
+        function salvaCont() {
+            $scope.contato.$save()
+                .then(function () {
+                    $scope.mensagem = {texto: 'Salvo com sucesso'};
+                    $location.path('#/api/contatos');
+                    //$scope.contato = new Contato();
+                })
+                .catch(function (erro) {
+                    $scope.mensagem = {texto: 'Não foi possível salvar'};
+                });
+        }
     }
-});
+})();

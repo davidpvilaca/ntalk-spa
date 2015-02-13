@@ -1,38 +1,38 @@
-/**
- * Created by douglas on 29/01/15.
- */
+(function() {
+    'use strict';
 
-angular.module("ntalk").controller("ContatosController", function(Contato, $scope) {
-    $scope.contatos = [];
-    $scope.filtro = '';
-    $scope.mensagem = {texto: ''};
+    angular.module("ntalk").controller("ContatosController", contatosCtrl);
 
-    //var Contato = $resource('/api/contatos/:id');
+    function contatosCtrl(Contato, $scope) {
+        $scope.contatos = [];
+        $scope.filtro = '';
+        $scope.mensagem = {texto: ''};
+        $scope.remove = removeCont;
+        buscaContatos();
 
-    //codigo para busca no banco
-    function buscaContatos() {
-        Contato.query(
-            function(contatos) {
-                $scope.contatos = contatos;
-                $scope.mensagem = {};
-            },
-            function (erro) {
-                $scope.mensagem = {
-                    texto: 'Não foi possível obter a lista'
-                };
-                console.log(erro);
-            }
-        );
+        function removeCont(contato) {
+            Contato.delete({id: contato._id},
+                buscaContatos,
+                function(erro) {
+                    $scope.mensagem = {texto: 'Não foi possível remover o contato'};
+                    console.log(erro);
+                }
+            );
+        };
+
+        function buscaContatos() {
+            Contato.query(
+                function(contatos) {
+                    $scope.contatos = contatos;
+                    $scope.mensagem = {};
+                },
+                function (erro) {
+                    $scope.mensagem = {
+                        texto: 'Não foi possível obter a lista'
+                    };
+                    console.log(erro);
+                }
+            );
+        }
     }
-    buscaContatos();
-
-    $scope.remove = function (contato) {
-        Contato.delete({id: contato._id},
-            buscaContatos,
-            function(erro) {
-                $scope.mensagem = {texto: 'Não foi possível remover o contato'};
-                console.log(erro);
-            }
-        );
-    };
-});
+})();
