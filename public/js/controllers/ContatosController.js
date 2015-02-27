@@ -3,7 +3,12 @@
 
     angular.module("ntalk").controller("ContatosController", contatosCtrl);
 
-    function contatosCtrl(Contato, $scope) {
+    function contatosCtrl($scope, $resource) {
+        /* jshint validthis: true */
+        //var vm = this;
+
+        var Contato = $resource('/api/contatos/:id');
+
         $scope.contatos = [];
         $scope.filtro = '';
         $scope.mensagem = {texto: ''};
@@ -18,7 +23,7 @@
                     console.log(erro);
                 }
             );
-        };
+        }
 
         function buscaContatos() {
             Contato.query(
