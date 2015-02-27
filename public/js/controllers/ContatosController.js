@@ -3,23 +3,23 @@
 
     angular.module("ntalk").controller("ContatosController", contatosCtrl);
 
-    function contatosCtrl($scope, $resource) {
+    function contatosCtrl($resource) {
         /* jshint validthis: true */
-        //var vm = this;
+        var vm = this;
 
         var Contato = $resource('/api/contatos/:id');
 
-        $scope.contatos = [];
-        $scope.filtro = '';
-        $scope.mensagem = {texto: ''};
-        $scope.remove = removeCont;
+        vm.contatos = [];
+        vm.filtro = '';
+        vm.mensagem = {texto: ''};
+        vm.remove = removeCont;
         buscaContatos();
 
         function removeCont(contato) {
             Contato.delete({id: contato._id},
                 buscaContatos,
                 function(erro) {
-                    $scope.mensagem = {texto: 'Não foi possível remover o contato'};
+                    vm.mensagem = {texto: 'Não foi possível remover o contato'};
                     console.log(erro);
                 }
             );
@@ -28,11 +28,11 @@
         function buscaContatos() {
             Contato.query(
                 function(contatos) {
-                    $scope.contatos = contatos;
-                    $scope.mensagem = {};
+                    vm.contatos = contatos;
+                    vm.mensagem = {};
                 },
                 function (erro) {
-                    $scope.mensagem = {
+                    vm.mensagem = {
                         texto: 'Não foi possível obter a lista'
                     };
                     console.log(erro);

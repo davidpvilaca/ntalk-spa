@@ -4,7 +4,8 @@ angular.module('ntalk', ['ngRoute', 'ngResource'])
 function configRotas($routeProvider) {
     $routeProvider.when('/api/contatos', {
         templateUrl: '../partials/contatos.html',
-        controller: 'ContatosController'
+        controller: 'ContatosController',
+        controllerAs: 'vm'
     })
     .when('/api/contato', {
         templateUrl: '../partials/contato.html',
