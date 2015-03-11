@@ -2,11 +2,7 @@
  * Created by douglas on 01/02/15.
  */
 
-var contatos = [
-    {_id: 1, nome: 'Contato Exemplo 123', email: 'cont1@empresa.com.br'},
-    {_id: 2, nome: 'Contato Exemplo 23', email: 'cont2@empresa.com.br'},
-    {_id: 3, nome: 'Contato Exemplo 3', email: 'cont3@empresa.com.br'}
-];
+var contatos = require('../mocks/contatos.json');
 
 module.exports = function () {
     var controller = {}
