@@ -2,7 +2,8 @@
  * Created by douglas on 01/02/15.
  */
 
-var contatos = require('../mocks/contatos.json');
+var contatos = require('../mocks/contatos.json')
+    ,teste = require('../mocks/teste.json');
 
 module.exports = function () {
     var controller = {}
@@ -14,6 +15,10 @@ module.exports = function () {
 
     controller.listaContatos = function (req, res) {
         res.json(contatos);
+    };
+
+    controller.listaTeste = function (req, res) {
+        res.json(teste);
     };
 
     controller.obtemContato = function (req, res) {

@@ -1,4 +1,4 @@
-angular.module('ntalk', ['ngRoute', 'ngResource'])
+angular.module('ntalk', ['ngRoute', 'ngResource', 'ui.select2'])
     .config(configRotas);
 
 function configRotas($routeProvider) {

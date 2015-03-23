@@ -8,4 +8,7 @@ module.exports = function (app) {
     app.route('/api/contatos/:id')
         .get(controller.obtemContato)
         .delete(controller.removeContato);
+
+    app.route('/api/teste')
+        .get(controller.listaTeste);
 };

@@ -1,6 +1,10 @@
 <div>
     <h1>Bem vindo ao NTlak!</h1>
 
+    <select ui-select2 ng-model="vm.teste.value" data-placeholder="Teste show">
+        <option ng-repeat="opcao in vm.teste.list" value="{{opcao.id}}">{{opcao.text}}</option>
+    </select>
+
     <a ng-href="#/api/contato" class="btn btn-primary">Novo contato</a>
     <input ng-model="vm.filtro" type="search" placeholder="parte do nome" />
     <p ng-show="vm.contatos.length">Contatos encontrados: {{resultado.length}}</p>

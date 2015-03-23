@@ -1,0 +1,17 @@
+{
+  "value": "1",
+  "list": [
+    {"id": "1",
+    "text": "Aviao"
+    },
+    {"id": "2",
+      "text": "Carro"
+    },
+    {"id": "3",
+      "text": "Moto"
+    },
+    {"id": "4",
+      "text": "Barco"
+    }
+  ]
+}
