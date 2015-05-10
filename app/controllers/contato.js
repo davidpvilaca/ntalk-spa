@@ -25,9 +25,7 @@ module.exports = function () {
             , contato = contatos.filter(function (contato) {
                 return contato._id == idContato;
         })[0];
-        contato ?
-            res.json(contato) :
-            res.status(404).send('contato nao encontrado');
+        contato ? res.json(contato) : res.status(404).send('contato nao encontrado');
     };
 
     controller.removeContato = function (req, res) {

@@ -2,7 +2,9 @@
 logs
 *.log
 .vagrant/
-.idea/*
+.idea/
+dist/
+
 # Runtime data
 pids
 *.pid

@@ -1,13 +1,39 @@
-/**
- * Created by douglas on 29/01/15.
- */
+//TODO - Registrando task de atalho
+module.exports = function(grunt) {
+    grunt.initConfig({
+        copy: {
+            project: {
+                expand: 'true',
+                cwd: '.',
+                src: ['**', '!Gruntfile.js', '!package.json', '!bower.json'],
+                dest: 'dist'
+            }
+        },
+        clean: {
+            dist: {
+                src: 'dist'
+            }
+        },
+        usemin: {
+            html: 'dist/public/views/*.html'
+        },
+        useminPrepare: {
+            options: {
+                root: 'dist/public',
+                dest: 'dist/public'
+            },
+            html: 'dist/public/views/*.html'
+        }
+    });
 
+    grunt.registerTask('default', ['dist']);
+    grunt.registerTask('dist', ['clean', 'copy']);
+    grunt.registerTask('minifica', ['useminPrepare', 'concat', 'uglify', 'cssmin', 'usemin']);
 
-//TODO continua no 2.8 do livro MEAN
-
-var http = require('http')
-    , app = require('./config/express')();
-
-http.createServer(app).listen(app.get('port'), function () {
-    console.log('Express escutando na porta ' + app.get('port'));
-});
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-usemin');
+};
